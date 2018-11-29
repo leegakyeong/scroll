@@ -1,4 +1,5 @@
 import React from 'react';
+import './Paper.css';
 
 const Paper = ({paper}) => { // 중괄호로 묶으면 안 되네? 이유 찾아보기
   const style = {
@@ -10,6 +11,7 @@ const Paper = ({paper}) => { // 중괄호로 묶으면 안 되네? 이유 찾아
     <div style={style} key={paper.id}>
       <h4>{paper.color}</h4>
       <p>{paper.background_color}</p>
+      <div className="ellipse"></div>
     </div>
   );
 }
