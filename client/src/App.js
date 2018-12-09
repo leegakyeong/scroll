@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route, Link } from 'react-router-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
 import './App.css';
-import PapersContainer from './components/PapersContainer';
-import MyPaper from './components/MyPaper';
+import ScrollsContainer from './components/ScrollsContainer';
+import Paper from './components/Paper';
 
 class App extends Component {
   render() {
     return (
       <BrowserRouter>
         <div className="App">
-          <Route exact path="/" component={PapersContainer} />
-          <Route path="/hello" component={MyPaper} />
+          <Route exact path="/" component={ScrollsContainer} />
+          <Route path="/:id" component={Paper} />
         </div>
       </BrowserRouter>
     );

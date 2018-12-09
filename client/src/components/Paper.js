@@ -1,25 +1,26 @@
-import React from 'react';
-import './Paper.css';
+import React, { Component } from 'react';
+import axios from 'axios';
 
-const Paper = ({paper}) => { // 중괄호로 묶으면 안 되네? 이유 찾아보기
-  const style = {
-    color: paper.color, 
-    backgroundColor: paper.background_color,
-    borderColor: paper.color
-  };
+class Paper extends Component {
+  componentDidMount () {
+    const {id} = this.props.match.params; // 왜 이름이 id가 아니면 안 되지..?!
+    axios.get(`http://localhost:3001/api/v1/papers/${id}.json`)
+    .then((response) => {
+      console.log(response);
+      //
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+  }
 
-  return (
-    <div className="paper" key={paper.id}>
-      <div className="ellipse" style={style}></div>
-      <div className="side" style={style}>
-        <div className="flex-container">
-          <h4>{paper.color}</h4>
-          <p>{paper.background_color}</p>
-        </div>
+  render () {
+    return (
+      <div>
+        hello
       </div>
-      <div className="ellipse right" style={style}></div>
-    </div>
-  );
+    );
+  }
 }
 
 export default Paper;

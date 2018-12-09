@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import Paper from './Paper';
+import Scroll from './Scroll';
 
-class PapersContainer extends Component {
+class ScrollsContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -23,13 +23,13 @@ class PapersContainer extends Component {
 
   render() {
     return (
-      <div className="Papers-container">
+      <div className="Scrolls-container">
         {this.state.papers.map((paper) => {
-          return ( <Paper paper={paper} key={paper.id} /> );
+          return ( <Scroll paper={paper} key={paper.id} /> );
         })}
       </div>
     );
   }
 }
 
-export default PapersContainer;
+export default ScrollsContainer;
