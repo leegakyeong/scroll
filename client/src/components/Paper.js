@@ -35,7 +35,7 @@ class Paper extends Component {
 
     return (
       <div className="paper" style={style}>
-        ~~~의 롤링페이퍼
+        <div className="title">~~~의 롤링페이퍼</div>
         {this.state.memos.map((memo) => {
           return ( <Memo memo={memo} key={memo.id} /> );
         })}

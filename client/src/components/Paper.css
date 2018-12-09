@@ -1,3 +1,12 @@
 .paper {
   border: 2px solid;
+  width: 60%;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+}
+
+.title {
+  grid-column-start: 1;
+  grid-column-end: 5;
 }

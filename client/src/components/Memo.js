@@ -3,8 +3,9 @@ import './Memo.css';
 
 const Memo = ({memo}) => {
   return (
-    <div>
-      {memo.content}, {memo.from}
+    <div className="memo">
+      <div className="content">{memo.content}</div>
+      <div className="from">{memo.from}</div>
     </div>
   );
 }
