@@ -23,7 +23,7 @@ class ScrollsContainer extends Component {
 
   render() {
     return (
-      <div className="Scrolls-container">
+      <div className="scrolls-container">
         {this.state.papers.map((paper) => {
           return ( <Scroll paper={paper} key={paper.id} /> );
         })}
