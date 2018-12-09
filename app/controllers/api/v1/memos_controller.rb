@@ -4,7 +4,8 @@ module Api::V1
 
     # GET /memos
     def index
-      @memos = Memo.all
+      paper_id = params[:paper_id]
+      @memos = Memo.where(paper_id: paper_id)
 
       render json: @memos
     end

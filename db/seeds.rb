@@ -8,3 +8,8 @@
 Paper.create(color: "mediumpurple", background_color: "lavenderblush")
 Paper.create(color: "mediumslateblue", background_color: "ghostwhite")
 Paper.create(color: "cornflowerblue", background_color: "whitesmoke")
+
+Memo.create(content: "hello1", from: "noone1", paper_id: 1)
+Memo.create(content: "hello2", from: "noone2", paper_id: 2)
+Memo.create(content: "hello3", from: "noone3", paper_id: 3)
+Memo.create(content: "hello4", from: "noone4", paper_id: 1)

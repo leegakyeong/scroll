@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 20181129071257) do
   enable_extension "plpgsql"
 
   create_table "memos", force: :cascade do |t|
+    t.integer "paper_id"
     t.text "content"
     t.string "from"
     t.datetime "created_at", null: false
