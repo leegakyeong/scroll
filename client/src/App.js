@@ -7,8 +7,22 @@ import Login from './components/Login';
 import Header from './components/Header';
 
 class App extends Component {
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     isLoggedIn: localStorage.jwt ? true : false
+  //   };
+  // }
+
+  // handleClick() { // 이렇게 짜는 거 별로 안 좋은 것 같지만 일단..
+  //   this.setState({
+  //     isLoggedIn: true ? false : true
+  //   });
+  //   console.log(1111111111111111);
+  // }
+
   render() {
-    if (localStorage.getItem('jwt')) { // 앗 localStorage.jwt도 되네
+    if (localStorage.jwt) { // if (this.state.isLoggedIn) {
       return (
         <BrowserRouter>
           <div className="App">
