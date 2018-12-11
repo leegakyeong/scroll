@@ -14,7 +14,7 @@ class Paper extends Component {
 
   componentDidMount () {
     const {id} = this.props.match.params; // 도대체 this.props.location.state.paper는 뭐고 this.props.match.params는 뭘까....
-    axios.get(`http://localhost:3001/api/v1/papers/${id}/memos.json`)
+    axios.get(`http://localhost:3001/api/papers/${id}/memos.json`)
     .then((response) => {
       console.log(response);
       this.setState({

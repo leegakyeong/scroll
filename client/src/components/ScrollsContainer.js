@@ -12,7 +12,7 @@ class ScrollsContainer extends Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:3001/api/v1/papers.json')
+    axios.get('http://localhost:3001/api/papers.json')
     .then((response) => {
       console.log(response);
       this.setState({
