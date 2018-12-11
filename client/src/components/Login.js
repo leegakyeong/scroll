@@ -3,10 +3,6 @@ import axios from 'axios';
 import './stylesheets/Login.css';
 
 class Login extends Component {
-  constructor (props) {
-    super(props);
-  }
-
   login () {
     // const name = document.getElementsByName('name')[0].value; // 배열을 리턴함
     // const password = document.getElementsByName('password')[0].value;
