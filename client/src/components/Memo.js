@@ -1,5 +1,5 @@
 import React from 'react';
-import './Memo.css';
+import './stylesheets/Memo.css';
 
 const Memo = ({memo}) => {
   return (

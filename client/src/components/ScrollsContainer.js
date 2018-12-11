@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Scroll from './Scroll';
-import './ScrollsContainer.css';
+import './stylesheets/ScrollsContainer.css';
 
 class ScrollsContainer extends Component {
   constructor(props) {

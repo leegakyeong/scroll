@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './Scroll.css';
+import './stylesheets/Scroll.css';
 
 const Scroll = ({paper}) => { // 중괄호로 묶으면 안 되네? 이유 찾아보기
   const style = {

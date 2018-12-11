@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Memo from './Memo';
-import './Paper.css';
+import './stylesheets/Paper.css';
 
 class Paper extends Component {
   constructor(props) {
