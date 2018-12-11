@@ -3,7 +3,6 @@ Rails.application.routes.draw do
     resources :papers do
       resources :memos
     end
-    # post 'user_token' => 'api/user_token#create'
     resources :users
   end
   scope :api do # https://github.com/nsarno/knock/issues/120
