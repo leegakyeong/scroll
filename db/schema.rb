@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20181211100358) do
   end
 
   create_table "papers", force: :cascade do |t|
+    t.integer "user_id"
     t.string "color"
     t.string "background_color"
     t.datetime "created_at", null: false
