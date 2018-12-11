@@ -1,5 +1,6 @@
 module Api
   class PapersController < ApplicationController
+    before_action :authenticate_user
     before_action :set_paper, only: [:show, :update, :destroy]
 
     # GET /papers

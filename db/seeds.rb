@@ -18,3 +18,6 @@ Memo.create(content: "hello4", from: "noone4", paper_id: 1)
 Memo.create(content: "hello5", from: "noone5", paper_id: 4)
 Memo.create(content: "hello6", from: "noone6", paper_id: 5)
 Memo.create(content: "hello7", from: "noone7", paper_id: 4)
+
+User.create(name: "apple", password: "aaaaaa", password_confirm: "aaaaaa", admin: true)
+User.create(name: "banana", password: "bbbbbb", password_confirm: "bbbbbb")
