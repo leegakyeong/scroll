@@ -9,20 +9,20 @@ class Login extends Component {
   login () {
     // const name = document.getElementsByName('name')[0].value; // 배열을 리턴함
     // const password = document.getElementsByName('password')[0].value;
-    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
     const request = {
       auth: {
-        name: name,
+        email: email,
         password: password
       }
     };
     axios.post('http://localhost:3001/api/user_token', request)
     .then((response) => {
-      console.log(response);
-      localStorage.setItem('jwt', response.jwt);
+      console.log(response.data.jwt);
+      localStorage.setItem('jwt', response.data.jwt);
     })
-    .catch((error) => console.log(error, name, password));
+    .catch((error) => console.log(error));
   }
 
   render () {
@@ -30,8 +30,8 @@ class Login extends Component {
       <div>
         <h1>Log in</h1>
         <form>
-          <label>Name</label>
-          <input name="name" id="name" />
+          <label>Email</label>
+          <input name="email" id="email" />
           <label>Password</label>
           <input name="password" id="password" />
         </form>

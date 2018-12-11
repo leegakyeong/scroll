@@ -19,5 +19,5 @@ Memo.create(content: "hello5", from: "noone5", paper_id: 4)
 Memo.create(content: "hello6", from: "noone6", paper_id: 5)
 Memo.create(content: "hello7", from: "noone7", paper_id: 4)
 
-User.create(name: "apple", password: "aaaaaa", password_confirm: "aaaaaa", admin: true)
-User.create(name: "banana", password: "bbbbbb", password_confirm: "bbbbbb")
+User.create(email: "a@a.com", password: "aaaaaa", password_confirmation: "aaaaaa", admin: true) # 왜 전에 confirm이라고만 했을 때는 에러가 안 떴을까...
+User.create(email: "b@b.com", password: "bbbbbb", password_confirmation: "bbbbbb")
