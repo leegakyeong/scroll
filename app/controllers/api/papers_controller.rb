@@ -1,4 +1,4 @@
-module Api::V1
+module Api
   class PapersController < ApplicationController
     before_action :set_paper, only: [:show, :update, :destroy]
 

@@ -1,4 +1,4 @@
-module Api::V1
+module Api
   class MemosController < ApplicationController
     before_action :set_memo, only: [:show, :update, :destroy]
 
