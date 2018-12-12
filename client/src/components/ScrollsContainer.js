@@ -33,7 +33,7 @@ class ScrollsContainer extends Component {
     return (
       <div className="scrolls-container">
         {this.state.papers.map((paper) => {
-          return ( <Scroll paper={paper} key={paper.id} /> );
+          return ( <Scroll paper={paper} key={paper.id} user={this.props.user} /> );
         })}
       </div>
     );

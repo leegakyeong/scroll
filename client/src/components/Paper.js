@@ -13,8 +13,8 @@ class Paper extends Component {
   }
 
   componentDidMount () {
-    let token = "bearer " + localStorage.getItem('jwt');
-    let config = {
+    const token = "bearer " + localStorage.getItem('jwt');
+    const config = {
       headers: {
         Authorization: token
       }
