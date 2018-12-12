@@ -12,7 +12,7 @@ class App extends Component {
     super(props);
     this.state = {
       isLoggedIn: localStorage.jwt ? true : false,
-      user: null
+      currentUser: null
     };
     this.login = this.login.bind(this);
     this.logout = this.logout.bind(this);
@@ -24,10 +24,10 @@ class App extends Component {
         Authorization: "bearer " + localStorage.getItem('jwt') 
       }
     };
-    axios.get('http://localhost:3001/api/user', config)
+    axios.get('http://localhost:3001/api/get_current_user', config)
     .then((response) => {
       console.log(response);
-      this.setState({ user: response.data });
+      this.setState({ currentUser: response.data });
     })
     .catch((error) => console.log(error));
   }
@@ -52,7 +52,7 @@ class App extends Component {
     localStorage.removeItem('jwt');
     this.setState({
       isLoggedIn: false,
-      user: null
+      currentUser: null
     });
   }
 
@@ -62,8 +62,8 @@ class App extends Component {
         <BrowserRouter>
           <div className="App">
             <Header logout={this.logout} />
-            <Route exact path="/" render={() => <ScrollsContainer user={this.state.user}/>} /> {/* 토큰을 App 컴포넌트에서 받아 오는 거랑 localStorage에서  받아오는것중에 뭐가 더 좋을까??!! */}
-            {/* <Route path="/:id" render={() => <Paper user={this.state.user}/>} /> */}
+            <Route exact path="/" render={() => <ScrollsContainer currentUser={this.state.currentUser}/>} /> {/* 토큰을 App 컴포넌트에서 받아 오는 거랑 localStorage에서  받아오는것중에 뭐가 더 좋을까??!! */}
+            {/* <Route path="/:id" render={() => <Paper currentUser={this.state.currentUser}/>} /> */}
             <Route path="/:id" component={Paper} />
           </div>
         </BrowserRouter>

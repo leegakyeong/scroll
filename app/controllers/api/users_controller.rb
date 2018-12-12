@@ -4,7 +4,7 @@ module Api
     before_action :set_user, only: [:show, :update, :destroy]
 
     # GET /user
-    def user
+    def get_current_user
       if current_user
         @user = current_user
         render json: @user

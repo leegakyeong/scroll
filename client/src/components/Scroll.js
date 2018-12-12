@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './stylesheets/Scroll.css';
 
-const Scroll = ({paper, user}) => {
+const Scroll = ({paper, currentUser}) => {
   const style = {
     color: paper.color, 
     backgroundColor: paper.background_color,
@@ -14,7 +14,7 @@ const Scroll = ({paper, user}) => {
       <div className="ellipse" style={style}></div>
       <div className="side" style={style}>
         <div className="flex-container">
-          {user.id === paper.user_id ? (
+          {currentUser.id === paper.user_id ? (
             <h4>내 롤링페이퍼</h4> ) : (
             <h4>{paper.color}</h4> )
           }
