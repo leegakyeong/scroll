@@ -64,7 +64,7 @@ class App extends Component {
             <Header logout={this.logout} />
             <Route exact path="/" render={() => <ScrollsContainer currentUser={this.state.currentUser}/>} /> {/* 토큰을 App 컴포넌트에서 받아 오는 거랑 localStorage에서  받아오는것중에 뭐가 더 좋을까??!! */}
             {/* <Route path="/:id" render={() => <Paper currentUser={this.state.currentUser}/>} /> */}
-            <Route path="/:id" component={Paper} />
+            <Route path="/:id" component={Paper} /> {/* 왜 ScrollsContainer처럼 여기다 props를 전달하면 안 되고 Link로 전달해야 할까???? */}
           </div>
         </BrowserRouter>
       );

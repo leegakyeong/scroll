@@ -14,11 +14,10 @@ const Scroll = ({paper, currentUser}) => {
       <div className="ellipse" style={style}></div>
       <div className="side" style={style}>
         <div className="flex-container">
-          {currentUser.id === paper.user_id ? (
-            <h4>내 롤링페이퍼</h4> ) : (
-            <h4>{paper.color}</h4> )
+          {currentUser.id === paper.user_id ? 
+          ( <h4>내 롤링페이퍼</h4> ) : ( <h4>{paper.color}</h4> )
           }
-          <Link to={{pathname: `${paper.id}`, state: {paper: paper}}} style={{...style, textDecoration: 'none'}}>쓰러 가기?</Link>
+          <Link to={{pathname: `${paper.id}`, state: {paper: paper, currentUser: currentUser}}} style={{...style, textDecoration: 'none'}}>쓰러 가기?</Link>
         </div>
       </div>
       <div className="ellipse right" style={style}></div>

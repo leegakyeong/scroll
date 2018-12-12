@@ -9,4 +9,15 @@
 .title {
   grid-column-start: 1;
   grid-column-end: 5;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.user-name {
+
+}
+
+.write-bt {
+  background-color: blue;
 }
