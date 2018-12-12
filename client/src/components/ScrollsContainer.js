@@ -14,16 +14,14 @@ class ScrollsContainer extends Component {
   componentDidMount() {
     // https://stackoverflow.com/questions/40988238/sending-the-bearer-token-with-axios
     // https://wpsn-axios-example.glitch.me/
-    let token = "bearer " + localStorage.getItem('jwt');
-    let config = {
+    const token = "bearer " + localStorage.getItem('jwt');
+    const config = {
       headers: {
         Authorization: token
       }
     };
-    console.log(token);
     axios.get('http://localhost:3001/api/papers.json', config)
     .then((response) => {
-      console.log(response);
       this.setState({
         papers: response.data
       });

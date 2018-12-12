@@ -1,6 +1,17 @@
 module Api
   class UsersController < ApplicationController
+    before_action :authenticate_user
     before_action :set_user, only: [:show, :update, :destroy]
+
+    # GET /user
+    def user
+      if current_user
+        @user = current_user
+        render json: @user
+      else
+        puts '----- no authenticated user -----'
+      end
+    end
 
     # GET /users
     def index
