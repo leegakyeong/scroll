@@ -60,7 +60,7 @@ module Api
 
       # Only allow a trusted parameter "white list" through.
       def memo_params
-        params.require(:memo).permit(:content, :from, :paper_id)
+        params.require(:memo).permit(:content, :from, :paper_id, :user_id)
       end
   end
 end

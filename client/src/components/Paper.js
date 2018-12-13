@@ -39,7 +39,7 @@ class Paper extends Component {
 
   addMemo = () => { // 내가 만든 메소드에서 this를 쓰기 위해 화살표 함수를 씀 여기서는
     const {id} = this.props.match.params;
-    const data = { memo: { content: '', from: '', paper_id: id }};
+    const data = { memo: { content: '', from: this.state.currentUser.email, paper_id: id, user_id: this.state.currentUser.id }};
     const config = { 
       headers: { 
         Authorization: "bearer " + localStorage.getItem('jwt'),

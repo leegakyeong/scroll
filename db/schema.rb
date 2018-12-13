@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 20181211100358) do
 
   create_table "memos", force: :cascade do |t|
     t.integer "paper_id"
+    t.integer "user_id"
     t.text "content"
     t.string "from"
     t.datetime "created_at", null: false
