@@ -4,6 +4,8 @@
   margin: auto;
   display: grid;
   grid-template-columns: 25% 25% 25% 25%;
+  min-height: 200px;
+  grid-template-rows: 50px auto;
 }
 
 .title {
@@ -14,10 +16,11 @@
   align-items: center;
 }
 
-.user-name {
-
+.write-bt {
+  border: none;
+  cursor: pointer;
 }
 
-.write-bt {
-  background-color: blue;
+.write-bt:focus {
+  outline: none;
 }
