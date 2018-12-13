@@ -3,6 +3,8 @@ import axios from 'axios';
 import Memo from './Memo';
 import './stylesheets/Paper.css';
 
+// axios.defaults.withCredentials = true;
+
 class Paper extends Component {
   constructor(props) {
     super(props);
@@ -23,7 +25,7 @@ class Paper extends Component {
     };
     const {id} = this.props.match.params; // 도대체 this.props.location.state.paper는 뭐고 this.props.match.params는 뭘까....
     axios.get(`http://localhost:3001/api/papers/${id}/memos.json`, config)
-    .then((response) => {
+    .then((response) => { console.log(response);
       this.setState({
         memos: response.data,
         id: id
@@ -36,8 +38,12 @@ class Paper extends Component {
 
   addMemo = () => { // 내가 만든 메소드에서 this를 쓰기 위해 화살표 함수를 씀 여기서는
     const {id} = this.props.match.params;
-    const data = { memo: { content: '', from: '' }};
-    const config = { headers: { Authorization: "bearer " + localStorage.getItem('jwt')}};
+    const data = { memo: { content: '', from: '', paper_id: id }};
+    const config = { 
+      headers: { 
+        Authorization: "bearer " + localStorage.getItem('jwt'),
+        // 'Access-Control-Allow-Credentials': true, // ? https://github.com/axios/axios/issues/853
+      }/*, withCredentials: true */};
     axios.post(`http://localhost:3001/api/papers/${id}/memos.json`, data, config)
     .then((response) => {
       console.log(response);

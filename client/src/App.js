@@ -25,7 +25,7 @@ class App extends Component {
       }
     };
     axios.get('http://localhost:3001/api/get_current_user', config)
-    .then((response) => {
+    .then((response) => { console.log(response);
       this.setState({ currentUser: response.data });
     })
     .catch((error) => console.log(error));
