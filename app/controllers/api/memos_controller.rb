@@ -7,7 +7,7 @@ module Api
     # GET /memos
     def index
       paper_id = params[:paper_id]
-      @memos = Memo.where(paper_id: paper_id)
+      @memos = Memo.where(paper_id: paper_id).reverse
 
       render json: @memos
       # puts '--------------------------------'
@@ -24,9 +24,10 @@ module Api
     # POST /memos
     def create
       @memo = Memo.new(memo_params)
-      # 여기서 문제가 생기는 것 같은데...도대체 뭐지
+      puts memo_params
 
       if @memo.save
+        # @memos = Memo.where(paper_id: memo_params[:paper_id]).reverse
         render json: @memo #, status: :created, location: @memo <- 엥 이거 주석처리하니까 잘 만들어진다..!! 대체 뭐지ㅜㅜㅜㅜ 아하 https://stackoverflow.com/questions/12084431/rails-what-is-the-location-option-for-in-the-render-method
         # response.headers['Access-Control-Allow-Credentials'] = 'true' # https://api.rubyonrails.org/classes/ActionDispatch/Response.html#method-i-set_header
         # puts response.to_a

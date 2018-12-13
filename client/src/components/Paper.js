@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import update from 'immutability-helper';
 import Memo from './Memo';
 import './stylesheets/Paper.css';
 
@@ -47,6 +48,12 @@ class Paper extends Component {
     axios.post(`http://localhost:3001/api/papers/${id}/memos.json`, data, config)
     .then((response) => {
       console.log(response);
+      const memos = update(
+        this.state.memos, {
+          $splice: [[0, 0, response.data]]
+        }
+      );
+      this.setState({ memos: memos });
     })
     .catch((error) => console.log(error));
   }
