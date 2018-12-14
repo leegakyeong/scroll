@@ -69,13 +69,25 @@ class Paper extends Component {
       backgroundColor: this.state.paper.color
     }
 
+    let button;
+    let hasMyMemo = false;
+    if (this.state.currentUser.id !== this.state.paper.user_id) {
+      this.state.memos.some((memo) => {
+        if (memo.user_id === this.state.currentUser.id) { // 이미 써준 적이 있으면
+          hasMyMemo = true;
+        }
+      });
+      hasMyMemo ? 
+      ( button = null ) : ( button = <button className="write-bt" style={btStyle} onClick={this.addMemo}>써주기</button> );
+    } else {
+      button = null;
+    }
+
     return (
       <div className="paper" style={style}>
         <div className="title">
           <div className="user-name">~~~의 롤링페이퍼</div> {/* 헐 롤링페이퍼 주인 이름은 또 어떻게 가져오지 */}
-          {this.state.currentUser.id !== this.state.paper.user_id ? 
-            ( <button className="write-bt" style={btStyle} onClick={this.addMemo}>써주기</button> ) : ( <span style={{display: 'none'}}>hello</span> )
-          }
+          {button}
         </div>
         {this.state.memos.map((memo) => {
           return ( <Memo memo={memo} key={memo.id} /> );
