@@ -2,19 +2,20 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import update from 'immutability-helper';
 import Memo from './Memo';
+import MemoForm from './MemoForm';
 import './stylesheets/Paper.css';
-
-// axios.defaults.withCredentials = true;
 
 class Paper extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentUser: this.props.location.state.currentUser, // 근데 currentUser랑 paper는 상태가 변하지도 않는데 여기다 넣는 게 맞는 건지 모르겠다
-      paper: this.props.location.state.paper, // Link 컴포넌트를 눌렀을 때 받아옴
+      currentUser: this.props.location.state.currentUser, // 근데 currentUser랑 paper는 상태가 변하지도 않는데 여기다 넣는 게 맞는 건지 모르겠다 그냥 보기 편하려고?
+      paper: this.props.location.state.paper, // Link 컴포넌트를 눌렀을 때 받아옴 (위의 currentUser도)
       memos: [],
-      id: this.props.match.params
+      id: this.props.match.params,
+      editingMemoId: null
     };
+    this.editMemo = this.editMemo.bind(this);
   }
 
   componentDidMount() {
@@ -26,7 +27,7 @@ class Paper extends Component {
     };
     const {id} = this.props.match.params; // 도대체 this.props.location.state.paper는 뭐고 this.props.match.params는 뭘까....
     axios.get(`http://localhost:3001/api/papers/${id}/memos.json`, config)
-    .then((response) => { console.log(response);
+    .then((response) => {
       this.setState({
         memos: response.data,
         id: id
@@ -41,25 +42,54 @@ class Paper extends Component {
     const {id} = this.props.match.params;
     const data = { memo: { content: '', from: this.state.currentUser.email, paper_id: id, user_id: this.state.currentUser.id }};
     const config = { 
-      headers: { 
-        Authorization: "bearer " + localStorage.getItem('jwt'),
-        // 'Access-Control-Allow-Credentials': true, // ? https://github.com/axios/axios/issues/853
-      }/*, withCredentials: true */};
+      headers: { Authorization: "bearer " + localStorage.getItem('jwt')}};
     axios.post(`http://localhost:3001/api/papers/${id}/memos.json`, data, config)
     .then((response) => {
-      console.log(response);
       const memos = update(
         this.state.memos, {
           $splice: [[0, 0, response.data]]
         }
       );
-      this.setState({ memos: memos });
+      this.setState({ 
+        memos: memos,
+        editingMemoId: response.data.id
+      });
+    })
+    .catch((error) => console.log(error));
+  }
+
+  editMemo = (memoId) => {
+    this.setState({ editingMemoId: memoId });
+  }
+
+  completeEditingMemo = (memoId, memoContent, memoFrom) => {
+    console.log(memoContent, memoFrom);
+    const {id} = this.props.match.params;
+    const data = {
+      memo: {
+        id: memoId,
+        content: memoContent,
+        from: memoFrom,
+        paper_id: id,
+        user_id: this.state.currentUser.id
+      }
+    };
+    const config = { headers: {Authorization: "bearer " + localStorage.getItem('jwt')}};
+    axios.patch(`http://localhost:3001/api/papers/${id}/memos/${memoId}.json`, data, config)
+    .then((response) => { console.log(response);
+      const memoIndex = this.state.memos.findIndex((memo) => memo.id === memoId);
+      const memos = update( this.state.memos, {
+        [memoIndex]: { $set: response.data } 
+      });
+      this.setState({ 
+        memos: memos,
+        editingMemoId: null }); console.log(this.state.memos);
     })
     .catch((error) => console.log(error));
   }
 
   render() {
-    const style = { // 이거 뭔가 안 좋은 방법 같은데..뭐가 좋은 방법인지 잘 모르겠음
+    const style = {
       color: this.state.paper.color,
       backgroundColor: this.state.paper.background_color,
       borderColor: this.state.paper.color
@@ -69,7 +99,7 @@ class Paper extends Component {
       backgroundColor: this.state.paper.color
     }
 
-    let button;
+    let createButton;
     let hasMyMemo = false;
     if (this.state.currentUser.id !== this.state.paper.user_id) {
       this.state.memos.some((memo) => {
@@ -77,20 +107,23 @@ class Paper extends Component {
           hasMyMemo = true;
         }
       });
-      hasMyMemo ? 
-      ( button = null ) : ( button = <button className="write-bt" style={btStyle} onClick={this.addMemo}>써주기</button> );
+      hasMyMemo ? ( createButton = null ) : ( createButton = <button className="write-bt" style={btStyle} onClick={this.addMemo}>써주기</button> );
     } else {
-      button = null;
+      createButton = null;
     }
 
     return (
       <div className="paper" style={style}>
         <div className="title">
           <div className="user-name">~~~의 롤링페이퍼</div> {/* 헐 롤링페이퍼 주인 이름은 또 어떻게 가져오지 */}
-          {button}
+          {createButton}
         </div>
         {this.state.memos.map((memo) => {
-          return ( <Memo memo={memo} key={memo.id} /> );
+          if (memo.id === this.state.editingMemoId) {
+            return ( <MemoForm memo={memo} key={memo.id} currentUser={this.state.currentUser} completeEditingMemo={this.completeEditingMemo} /> );
+          } else {
+            return ( <Memo memo={memo} key={memo.id} currentUser={this.state.currentUser} editMemo={this.editMemo} /> );
+          }
         })}
       </div>
     );
