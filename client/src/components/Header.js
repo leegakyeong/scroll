@@ -5,7 +5,7 @@ import './stylesheets/Header.css';
 const Header = (props) => {
   return (
     <header>
-      <Link to="/"><img src="/favicon.ico"></img></Link>
+      <Link to="/"><img id="logo" src="/favicon.ico"></img></Link>
       <div>SNULION 2018</div>
       <button onClick={props.logout}>LOGOUT</button>
     </header>

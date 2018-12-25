@@ -1,12 +1,15 @@
 header {
   border-bottom: 2px solid mediumslateblue;
   background-color: ghostwhite;
-  height: 40px; /* 왜 %가 안 먹히지 */
+  height: 50px; /* 왜 %가 안 먹히지 */
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
-  padding: 0 10px 0 10px;
+}
+
+#logo {
+  margin-left: 20px;
 }
 
 header > div {
@@ -15,8 +18,9 @@ header > div {
 }
 
 header > button {
-  height: 70%;
+  height: 30px;
   width: 70px;
+  margin-right: 20px;
   background-color: mediumslateblue;
   border: 2px solid mediumslateblue;
   color: white;
