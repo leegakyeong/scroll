@@ -1,6 +1,5 @@
 module Api
   class MemosController < ApplicationController
-    # skip_before_action :verify_authenticity_token
     before_action :authenticate_user
     before_action :set_memo, only: [:show, :update, :destroy]
 
@@ -9,11 +8,20 @@ module Api
       paper_id = params[:paper_id]
       @memos = Memo.where(paper_id: paper_id).reverse
 
+      # render json: @memos
+
+      # @memos.map{|memo| memo.force_encoding('UTF-8')}
+      @memos.map{|memo| 
+        memo.attributes.each do |key, value|
+          if value.is_a? String
+            value.force_encoding('UTF-8') # 원래 한글의 인코딩은 ASCII-8BIT임
+          end
+        end
+      }
+      # respond_to do |format|
+      #   format.json {render :json => @memos}
+      # end
       render json: @memos
-      # puts '--------------------------------'
-      # response.set_header('Access-Control-Allow-Credentials', 'true') # https://api.rubyonrails.org/classes/ActionDispatch/Response.html#method-i-set_header
-      # puts response.get_header('Access-Control-Allow-Credentials')
-      # puts response.to_a
     end
 
     # GET /memos/1
@@ -27,15 +35,10 @@ module Api
       puts memo_params
 
       if @memo.save
-        # @memos = Memo.where(paper_id: memo_params[:paper_id]).reverse
         render json: @memo #, status: :created, location: @memo <- 엥 이거 주석처리하니까 잘 만들어진다..!! 대체 뭐지ㅜㅜㅜㅜ 아하 https://stackoverflow.com/questions/12084431/rails-what-is-the-location-option-for-in-the-render-method
-        # response.headers['Access-Control-Allow-Credentials'] = 'true' # https://api.rubyonrails.org/classes/ActionDispatch/Response.html#method-i-set_header
-        # puts response.to_a
       else
         render json: @memo.errors, status: :unprocessable_entity
       end
-      # Memo.create(memo_params)
-      # puts memo_params
     end
 
     # PATCH/PUT /memos/1
