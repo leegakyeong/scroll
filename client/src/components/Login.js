@@ -6,6 +6,8 @@ const Login = (props) => {
     <div>
       <h1>Log in</h1>
       <form>
+        <label>Name</label>
+        <input name="name" id="name" />
         <label>Email</label>
         <input name="email" id="email" />
         <label>Password</label>

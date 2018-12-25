@@ -6,6 +6,7 @@ module Api
     # GET /user
     def get_current_user
       if current_user
+        current_user.name.force_encoding('UTF-8') # 이름도 한글이라
         @user = current_user
         render json: @user
       else
@@ -58,7 +59,7 @@ module Api
 
       # Only allow a trusted parameter "white list" through.
       def user_params
-        params.require(:user).permit(:email, :password_digest, :admin)
+        params.require(:user).permit(:name, :email, :password_digest, :admin)
       end
   end
 end

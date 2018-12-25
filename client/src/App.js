@@ -34,6 +34,7 @@ class App extends Component {
   login() {
     const request = {
       auth: {
+        name: document.getElementById('name').value,
         email: document.getElementById('email').value,
         password: document.getElementById('password').value
       }
