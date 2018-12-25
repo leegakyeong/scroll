@@ -1,1 +1,1 @@
-web: heroku run rake db:seed && PORT=3001 && bundle exec rails s
+web: bundle exec rake db:seed && PORT=3001 && bundle exec rails s
