@@ -17,5 +17,5 @@
 
 /config/secrets.yml
 
-#production
-/public
+# production
+# /public
