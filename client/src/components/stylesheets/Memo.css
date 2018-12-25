@@ -1,3 +1,11 @@
+.memo {
+  padding: 10px;
+}
+
+.content {
+  min-height: 100px;
+}
+
 .from {
   text-align: right;
 }

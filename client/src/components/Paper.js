@@ -142,7 +142,7 @@ class Paper extends Component {
 
     return (
       <div className="paper" style={style}>
-        <div className="title">
+        <div className="title" borderColor={this.state.paper.color}>
           <div className="user-name">~~~의 롤링페이퍼</div> {/* 헐 롤링페이퍼 주인 이름은 또 어떻게 가져오지 */}
           {createButton}
         </div>

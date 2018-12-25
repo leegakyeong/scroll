@@ -2,6 +2,7 @@
   position: relative; /* z-index는 position이 지정된 요소에만 적용됨 */
   overflow: auto; /* https://stackoverflow.com/questions/9519841/why-does-this-css-margin-top-style-not-work 아직 이해는 못함.. */
   /* margin: 10px; 아니 왜 여기다 마진을 주면 자식 요소들에게 마진이 생기는 거지!!!! */
+  /* min-width: 200px; */
 }
 
 .ellipse {

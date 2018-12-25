@@ -1,7 +1,14 @@
 .scrolls-container {
   width: 60%;
-  min-width: 920px;
+  /* min-width: 920px; */
   margin: auto;
   display: grid;
   grid-template-columns: 25% 25% 25% 25%;
+}
+
+@media only screen and (orientation: portrait) {
+  .scrolls-container {
+    width: 90%;
+    grid-template-columns: 100%;
+  }
 }

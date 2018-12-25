@@ -19,7 +19,7 @@ class Memo extends Component {
 
     return (
       <div className="memo">
-        {editButton}
+        {editButton}<br />
         <div className="content">{memo.content}</div>
         <div className="from">{memo.from}</div>
       </div>
