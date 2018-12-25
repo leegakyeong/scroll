@@ -11,14 +11,15 @@ header {
 
 header > div {
   font-weight: 700;
+  padding-left: 50px; /* 보다 정밀한 중앙정렬 */
 }
 
 header > button {
-  height: 60%;
+  height: 70%;
+  width: 70px;
   background-color: mediumslateblue;
   border: 2px solid mediumslateblue;
   color: white;
-  border-radius: 8px;
   cursor: pointer;
 }
 

@@ -3,15 +3,20 @@ import './stylesheets/Login.css';
 
 const Login = (props) => {
   return (
-    <div>
-      <h1>Log in</h1>
+    <div class="loginBox">
+      <img src="/favicon.ico"></img>
+      <h1>SCROLL</h1>
       <form>
-        <label>Email</label>
-        <input name="email" id="email" />
-        <label>Password</label>
-        <input name="password" id="password" />
+        <div class="Email">
+          {/* <label>Email</label> */}
+          <input name="email" id="email" placeholder="EMAIL"/>
+        </div>
+        <div class="Password">
+          {/* <label>Password</label> */}
+          <input name="password" id="password" placeholder="PASSWORD"/>
+        </div>
       </form>
-      <button onClick={props.login}>login</button>
+      <button onClick={props.login}>LOG IN</button>
     </div>
   );
 }

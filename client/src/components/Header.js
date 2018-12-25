@@ -7,7 +7,7 @@ const Header = (props) => {
     <header>
       <Link to="/"><img src="/favicon.ico"></img></Link>
       <div>SNULION 2018</div>
-      <button onClick={props.logout}>logout</button>
+      <button onClick={props.logout}>LOGOUT</button>
     </header>
   );
 }
