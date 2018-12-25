@@ -16,6 +16,8 @@ class Paper extends Component {
       editingMemoId: null
     };
     this.editMemo = this.editMemo.bind(this);
+
+    this.DOMAIN = 'http://localhost:3001';
   }
 
   componentDidMount() {
@@ -26,7 +28,7 @@ class Paper extends Component {
       }
     };
     const {id} = this.props.match.params; // 도대체 this.props.location.state.paper는 뭐고 this.props.match.params는 뭘까....
-    axios.get(`http://localhost:3001/api/papers/${id}/memos.json`, config)
+    axios.get(`${this.DOMAIN}/api/papers/${id}/memos.json`, config)
     .then((response) => {
       this.setState({
         memos: response.data,
@@ -40,10 +42,10 @@ class Paper extends Component {
 
   addMemo = () => { // 내가 만든 메소드에서 this를 쓰기 위해 화살표 함수를 씀 여기서는
     const {id} = this.props.match.params;
-    const data = { memo: { content: '', from: this.state.currentUser.email, paper_id: id, user_id: this.state.currentUser.id }};
+    const data = { memo: { content: '', from: this.state.currentUser.name, paper_id: id, user_id: this.state.currentUser.id }};
     const config = { 
       headers: { Authorization: "bearer " + localStorage.getItem('jwt')}};
-    axios.post(`http://localhost:3001/api/papers/${id}/memos.json`, data, config)
+    axios.post(`${this.DOMAIN}/api/papers/${id}/memos.json`, data, config)
     .then((response) => {
       const memos = update(
         this.state.memos, {
@@ -75,7 +77,7 @@ class Paper extends Component {
       }
     };
     const config = { headers: {Authorization: "bearer " + localStorage.getItem('jwt')}};
-    axios.patch(`http://localhost:3001/api/papers/${id}/memos/${memoId}.json`, data, config)
+    axios.patch(`${this.DOMAIN}/api/papers/${id}/memos/${memoId}.json`, data, config)
     .then((response) => { console.log(response);
       const memoIndex = this.state.memos.findIndex((memo) => memo.id === memoId);
       const memos = update( this.state.memos, {
