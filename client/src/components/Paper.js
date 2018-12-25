@@ -4,6 +4,7 @@ import update from 'immutability-helper';
 import Memo from './Memo';
 import MemoForm from './MemoForm';
 import './stylesheets/Paper.css';
+import ColorList from '../ColorList';
 
 class Paper extends Component {
   constructor(props) {
@@ -90,6 +91,25 @@ class Paper extends Component {
     .catch((error) => console.log(error));
   }
 
+  changeColor = (attr) => {
+    const randomColor = ColorList[Math.floor(Math.random() * ColorList.length)];
+    console.log(attr, randomColor);
+    const {id} = this.props.match.params;
+    const data = {
+      paper: {
+        id: id,
+        color: attr === 'color' ? randomColor : this.state.paper.color,
+        background_color: attr === 'color' ? this.state.paper.background_color : randomColor
+      }
+    };
+    const config = { headers: {Authorization: "bearer " + localStorage.getItem('jwt')}};
+    axios.patch(`${this.DOMAIN}/api/papers/${id}.json`, data, config)
+    .then((response) => { console.log(response.data);
+      this.setState({ paper: response.data });
+    })
+    .catch((error) => console.log(error));
+  }
+
   render() {
     const style = {
       color: this.state.paper.color,
@@ -111,7 +131,13 @@ class Paper extends Component {
       });
       hasMyMemo ? ( createButton = null ) : ( createButton = <button className="write-bt" style={btStyle} onClick={this.addMemo}>써주기</button> );
     } else {
-      createButton = null;
+      createButton = (
+        // https://stackoverflow.com/questions/29810914/react-js-onclick-cant-pass-value-to-method
+        <div>
+          <button onClick={() => this.changeColor('color')} name="color" id="color">선 색 바꾸기</button>
+          <button onClick={() => this.changeColor('background_color')} name="background_color" id="background_color">배경 색 바꾸기</button>
+        </div>
+      );
     }
 
     return (
