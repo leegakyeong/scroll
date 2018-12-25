@@ -6,4 +6,23 @@ header {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
+  padding: 0 10px 0 10px;
+}
+
+header > div {
+  font-weight: 700;
+}
+
+header > button {
+  height: 60%;
+  background-color: mediumslateblue;
+  border: 2px solid mediumslateblue;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+header > button:hover {
+  background-color: transparent;
+  color: black;
 }

@@ -5,8 +5,8 @@ import './stylesheets/Header.css';
 const Header = (props) => {
   return (
     <header>
-      <Link to="/">Home</Link>
-      <div>snulion2018</div>
+      <Link to="/"><img src="/favicon.ico"></img></Link>
+      <div>SNULION 2018</div>
       <button onClick={props.logout}>logout</button>
     </header>
   );
