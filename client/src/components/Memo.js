@@ -12,7 +12,7 @@ class Memo extends Component {
 
     let editButton;
     if (memo.user_id === currentUser.id) {
-      editButton = <button onClick={this.handleClick}>edit</button>;
+      editButton = <button onClick={this.handleClick} style={this.props.btStyle} className="memo-bt">수정하기</button>;
     } else {
       editButton = null;
     }

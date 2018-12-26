@@ -16,7 +16,7 @@ class MemoForm extends Component {
           <textarea name="content" id="content" defaultValue={this.props.memo.content}></textarea>
           <input name="from" id="from" defaultValue={this.props.memo.from} />
         </form>
-        <button onClick={this.handleClick}>수정 완료</button>
+        <button onClick={this.handleClick} style={this.props.btStyle} className="memo-bt">완료</button>
       </div>
     );
   }

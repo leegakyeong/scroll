@@ -146,9 +146,9 @@ class Paper extends Component {
         </div>
         {this.state.memos.map((memo) => {
           if (memo.id === this.state.editingMemoId) {
-            return ( <MemoForm memo={memo} key={memo.id} currentUser={this.state.currentUser} completeEditingMemo={this.completeEditingMemo} /> );
+            return ( <MemoForm memo={memo} key={memo.id} currentUser={this.state.currentUser} completeEditingMemo={this.completeEditingMemo} btStyle={btStyle} /> );
           } else {
-            return ( <Memo memo={memo} key={memo.id} currentUser={this.state.currentUser} editMemo={this.editMemo} /> );
+            return ( <Memo memo={memo} key={memo.id} currentUser={this.state.currentUser} editMemo={this.editMemo} btStyle={btStyle} /> );
           }
         })}
       </div>

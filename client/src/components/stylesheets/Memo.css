@@ -12,3 +12,12 @@
 .from {
   text-align: right;
 }
+
+.memo-bt {
+  border: none;
+  cursor: pointer;
+}
+
+.memo-bt:focus {
+  outline: none;
+}

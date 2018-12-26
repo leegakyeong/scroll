@@ -1,3 +1,8 @@
+@font-face {
+  font-family: 'Spoqa Han Sans';
+  src: url('./fonts/Spoqa\ Han\ Sans\ Regular.ttf');
+}
+
 header {
   border-bottom: 2px solid mediumslateblue;
   background-color: ghostwhite;
@@ -6,6 +11,7 @@ header {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
+  font-family: 'Spoqa Han Sans';
 }
 
 #logo {
