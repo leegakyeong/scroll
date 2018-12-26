@@ -23,7 +23,7 @@ class ScrollsContainer extends Component {
       }
     };
     axios.get(`${this.DOMAIN}/api/papers.json`, config)
-    .then((response) => { console.log(response.data);
+    .then((response) => {
       this.setState({
         papers: response.data
       });

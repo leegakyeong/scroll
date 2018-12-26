@@ -33,7 +33,8 @@ module Api
     # PATCH/PUT /papers/1
     def update
       if @paper.update(paper_params)
-        render json: @paper
+        @paper.user.name.force_encoding('utf-8')
+        render json: @paper, include: {user: {only: :name}}
       else
         render json: @paper.errors, status: :unprocessable_entity
       end
