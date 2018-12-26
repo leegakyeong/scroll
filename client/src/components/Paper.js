@@ -66,7 +66,6 @@ class Paper extends Component {
   }
 
   completeEditingMemo = (memoId, memoContent, memoFrom) => {
-    console.log(memoContent, memoFrom);
     const {id} = this.props.match.params;
     const data = {
       memo: {
@@ -79,21 +78,20 @@ class Paper extends Component {
     };
     const config = { headers: {Authorization: "bearer " + localStorage.getItem('jwt')}};
     axios.patch(`${this.DOMAIN}/api/papers/${id}/memos/${memoId}.json`, data, config)
-    .then((response) => { console.log(response);
+    .then((response) => {
       const memoIndex = this.state.memos.findIndex((memo) => memo.id === memoId);
       const memos = update( this.state.memos, {
         [memoIndex]: { $set: response.data } 
       });
       this.setState({ 
         memos: memos,
-        editingMemoId: null }); console.log(this.state.memos);
+        editingMemoId: null });
     })
     .catch((error) => console.log(error));
   }
 
   changeColor = (attr) => {
     const randomColor = ColorList[Math.floor(Math.random() * ColorList.length)];
-    console.log(attr, randomColor);
     const {id} = this.props.match.params;
     const data = {
       paper: {
@@ -104,7 +102,7 @@ class Paper extends Component {
     };
     const config = { headers: {Authorization: "bearer " + localStorage.getItem('jwt')}};
     axios.patch(`${this.DOMAIN}/api/papers/${id}.json`, data, config)
-    .then((response) => { console.log(response.data);
+    .then((response) => {
       this.setState({ paper: response.data });
     })
     .catch((error) => console.log(error));
