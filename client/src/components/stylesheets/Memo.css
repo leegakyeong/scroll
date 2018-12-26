@@ -1,9 +1,12 @@
 .memo {
   padding: 10px;
+  word-break: keep-all;
+  word-wrap: break-word;
 }
 
 .content {
   min-height: 100px;
+  text-align: left;
 }
 
 .from {
