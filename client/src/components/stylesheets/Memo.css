@@ -2,6 +2,8 @@
   padding: 20px;
   word-break: keep-all;
   word-wrap: break-word;
+  text-align: right;
+  white-space: pre-wrap; /* http://htglss.tistory.com/31, https://www.codingfactory.net/10597 */
 }
 
 .content {
@@ -11,11 +13,16 @@
 
 .from {
   text-align: right;
+  margin-top: 15px;
 }
 
 .memo-bt {
   border: none;
   cursor: pointer;
+  position: relative;
+  /* right: -20px; */
+  top: -10px;
+  font-weight: bold;
 }
 
 .memo-bt:focus {

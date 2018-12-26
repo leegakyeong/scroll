@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './stylesheets/MemoForm.css';
 
 class MemoForm extends Component {
   handleClick = () => {
@@ -11,12 +12,10 @@ class MemoForm extends Component {
 
   render() {
     return (
-      <div>
-        <form>
-          <textarea name="content" id="content" defaultValue={this.props.memo.content}></textarea>
-          <input name="from" id="from" defaultValue={this.props.memo.from} />
-        </form>
+      <div className="memoform">
         <button onClick={this.handleClick} style={this.props.btStyle} className="memo-bt">완료</button>
+        <textarea name="content" id="content" defaultValue={this.props.memo.content} className="memoform-content" style={{color: `${this.props.textColor}`}}></textarea>
+        <input name="from" id="from" defaultValue={this.props.memo.from} className="memoform-from" style={{color: `${this.props.textColor}`}} />
       </div>
     );
   }
