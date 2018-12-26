@@ -14,7 +14,7 @@ const Scroll = ({paper, currentUser}) => {
     scrollTitle = '내 롤링페이퍼';
     scrollLink = '읽으러 가기';
   } else {
-    scrollTitle = paper.color;
+    scrollTitle = paper.user.name;
     scrollLink = '쓰러 가기';
   }
 

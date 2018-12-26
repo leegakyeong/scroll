@@ -6,8 +6,12 @@ module Api
     # GET /papers
     def index
       @papers = Paper.all
+      @papers.map{|paper|
+        paper.user.name.force_encoding('utf-8')
+      } # 오 여기가 복사하지 않고 원본을 바로 바꾸는구나!
 
-      render json: @papers
+      # https://stackoverflow.com/questions/17730121/include-associated-model-when-rendering-json-in-rails
+      render json: @papers, include: {user: {only: :name}}
     end
 
     # GET /papers/1

@@ -141,7 +141,7 @@ class Paper extends Component {
     return (
       <div className="paper" style={style}>
         <div className="title">
-          <div className="user-name">~~~의 롤링페이퍼</div> {/* 헐 롤링페이퍼 주인 이름은 또 어떻게 가져오지 */}
+          <div className="user-name">{`${this.state.paper.user.name}의 롤링페이퍼`}</div> {/* 이름이 자음으로 끝나면 어색해서 어떡하지 이것까지 신경쓸 시간이 생기려나 */}
           {createButton}
         </div>
         {this.state.memos.map((memo) => {
