@@ -1,14 +1,23 @@
 .scrolls-container {
   width: 60%;
-  /* min-width: 920px; */
+  min-width: 920px;
   margin: auto;
   display: grid;
   grid-template-columns: 25% 25% 25% 25%;
+  grid-row-gap: 20px;
 }
 
-@media only screen and (orientation: portrait) {
+@media screen and (max-width:1199px) {
+  #header,
   .scrolls-container {
-    width: 90%;
-    grid-template-columns: 100%;
+    min-width: 690px;
+    grid-template-columns: 33.333% 33.333% 33.333%
+  }
+}
+@media screen and (max-width:767px) {
+  #header,
+  .scrolls-container {
+    min-width: 230px;
+    grid-template-columns: 100% 
   }
 }

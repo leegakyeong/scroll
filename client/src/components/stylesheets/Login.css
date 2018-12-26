@@ -1,0 +1,43 @@
+.loginBox {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 300px;
+    text-align: center;
+}
+
+h1 {
+    color: mediumslateblue;
+}
+
+input {
+    margin-bottom: 10px;
+    padding: 11px 17px;
+    appearance: none;
+    outline: none;
+    line-height: normal;
+    border: 1px solid transparent;
+    border-bottom-color: rgba(0, 0, 0, 0.3);
+    background-color: transparent;
+    width: 60%;
+}
+
+input:active, input:focus {
+    border-bottom-color: mediumslateblue;
+}
+
+.loginBox > button {
+    margin-top: 20px;
+    height: 30px;
+    width: 70px;
+    background-color: mediumslateblue;
+    border: 2px solid mediumslateblue;
+    color: white;
+    cursor: pointer;
+}
+  
+.loginBox > button:hover {
+    background-color: transparent;
+    color: black;
+}
