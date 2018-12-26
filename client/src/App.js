@@ -16,6 +16,8 @@ class App extends Component {
     };
     this.login = this.login.bind(this);
     this.logout = this.logout.bind(this);
+
+    this.DOMAIN = 'http://localhost:3001';
   }
 
   componentDidMount() {
@@ -24,8 +26,8 @@ class App extends Component {
         Authorization: "bearer " + localStorage.getItem('jwt') 
       }
     };
-    axios.get('http://localhost:3001/api/get_current_user', config)
-    .then((response) => { console.log(response);
+    axios.get(`${this.DOMAIN}/api/get_current_user`, config)
+    .then((response) => {
       this.setState({ currentUser: response.data });
     })
     .catch((error) => console.log(error));
@@ -34,11 +36,12 @@ class App extends Component {
   login() {
     const request = {
       auth: {
+        name: document.getElementById('name').value,
         email: document.getElementById('email').value,
         password: document.getElementById('password').value
       }
     };
-    axios.post('http://localhost:3001/api/user_token', request)
+    axios.post(`${this.DOMAIN}/api/user_token`, request)
     .then((response) => {
       localStorage.setItem('jwt', response.data.jwt);
       this.setState({ isLoggedIn: true });
@@ -61,7 +64,7 @@ class App extends Component {
         <BrowserRouter>
           <div className="App">
             <Header logout={this.logout} />
-            <Route exact path="/" render={() => <ScrollsContainer currentUser={this.state.currentUser}/>} /> {/* 토큰을 App 컴포넌트에서 받아 오는 거랑 localStorage에서  받아오는것중에 뭐가 더 좋을까??!! */}
+            <Route exact path="/" render={() => <ScrollsContainer currentUser={this.state.currentUser}/>} />
             {/* <Route path="/:id" render={() => <Paper currentUser={this.state.currentUser}/>} /> */}
             <Route path="/:id" component={Paper} /> {/* 왜 ScrollsContainer처럼 여기다 props를 전달하면 안 되고 Link로 전달해야 할까???? */}
           </div>

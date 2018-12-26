@@ -1,9 +1,39 @@
+@font-face {
+  font-family: 'Spoqa Han Sans';
+  src: url('./fonts/Spoqa\ Han\ Sans\ Regular.ttf');
+}
+
 header {
   border-bottom: 2px solid mediumslateblue;
-  background-color: ghostwhite;
+  background-color: mediumslateblue;
   height: 40px; /* 왜 %가 안 먹히지 */
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
+  font-family: 'Spoqa Han Sans';
+}
+
+#logo {
+  margin-left: 15px;
+}
+
+header > div {
+  font-weight: 700;
+  padding-left: 50px; /* 보다 정밀한 중앙정렬 */
+}
+
+header > button {
+  height: 30px;
+  width: 70px;
+  margin-right: 20px;
+  background-color: mediumslateblue;
+  border: 2px solid mediumslateblue;
+  color: white;
+  cursor: pointer;
+}
+
+header > button:hover {
+  background-color: transparent;
+  color: black;
 }

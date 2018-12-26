@@ -5,11 +5,11 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-User.create(email: "a@a.com", password: "aaaaaa", password_confirmation: "aaaaaa", admin: true) # 왜 전에 confirm이라고만 했을 때는 에러가 안 떴을까...
-User.create(email: "b@b.com", password: "bbbbbb", password_confirmation: "bbbbbb")
-User.create(email: "c@c.com", password: "cccccc", password_confirmation: "cccccc")
-User.create(email: "d@d.com", password: "dddddd", password_confirmation: "dddddd")
-User.create(email: "e@e.com", password: "eeeeee", password_confirmation: "eeeeee")
+User.create(name: "유저1", email: "a@a.com", password: "aaaaaa", password_confirmation: "aaaaaa", admin: true) # 왜 전에 confirm이라고만 했을 때는 에러가 안 떴을까...
+User.create(name: "유저2", email: "b@b.com", password: "bbbbbb", password_confirmation: "bbbbbb")
+User.create(name: "유저3", email: "c@c.com", password: "cccccc", password_confirmation: "cccccc")
+User.create(name: "유저4", email: "d@d.com", password: "dddddd", password_confirmation: "dddddd")
+User.create(name: "유저5", email: "e@e.com", password: "eeeeee", password_confirmation: "eeeeee")
 
 Paper.create(color: "mediumpurple", background_color: "lavenderblush", user_id: 1)
 Paper.create(color: "mediumslateblue", background_color: "ghostwhite", user_id: 2)

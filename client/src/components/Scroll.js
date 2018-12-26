@@ -9,15 +9,22 @@ const Scroll = ({paper, currentUser}) => {
     borderColor: paper.color
   };
 
+  let scrollTitle, scrollLink;
+  if (currentUser.id === paper.user_id) {
+    scrollTitle = '내 롤링페이퍼';
+    scrollLink = '읽으러 가기 →';
+  } else {
+    scrollTitle = paper.user.name;
+    scrollLink = '쓰러 가기 →';
+  }
+
   return (
     <div className="scroll" key={paper.id}>
       <div className="ellipse" style={style}></div>
       <div className="side" style={style}>
         <div className="flex-container">
-          {currentUser.id === paper.user_id ? 
-          ( <h4>내 롤링페이퍼</h4> ) : ( <h4>{paper.color}</h4> )
-          }
-          <Link to={{pathname: `${paper.id}`, state: {paper: paper, currentUser: currentUser}}} style={{...style, textDecoration: 'none'}}>쓰러 가기?</Link>
+          <div className="scroll-title">{scrollTitle}</div>
+          <Link to={{pathname: `${paper.id}`, state: {paper: paper, currentUser: currentUser}}} style={{...style, textDecoration: 'none'}}>{scrollLink}</Link>
         </div>
       </div>
       <div className="ellipse right" style={style}></div>

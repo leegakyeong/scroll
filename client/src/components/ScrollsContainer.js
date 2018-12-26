@@ -9,6 +9,8 @@ class ScrollsContainer extends Component {
     this.state = {
       papers: []
     };
+
+    this.DOMAIN = 'http://localhost:3001';
   }
 
   componentDidMount() {
@@ -20,7 +22,7 @@ class ScrollsContainer extends Component {
         Authorization: token
       }
     };
-    axios.get('http://localhost:3001/api/papers.json', config)
+    axios.get(`${this.DOMAIN}/api/papers.json`, config)
     .then((response) => {
       this.setState({
         papers: response.data

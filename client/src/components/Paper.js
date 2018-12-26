@@ -4,6 +4,7 @@ import update from 'immutability-helper';
 import Memo from './Memo';
 import MemoForm from './MemoForm';
 import './stylesheets/Paper.css';
+import ColorList from '../ColorList';
 
 class Paper extends Component {
   constructor(props) {
@@ -16,6 +17,8 @@ class Paper extends Component {
       editingMemoId: null
     };
     this.editMemo = this.editMemo.bind(this);
+
+    this.DOMAIN = 'http://localhost:3001';
   }
 
   componentDidMount() {
@@ -26,7 +29,7 @@ class Paper extends Component {
       }
     };
     const {id} = this.props.match.params; // 도대체 this.props.location.state.paper는 뭐고 this.props.match.params는 뭘까....
-    axios.get(`http://localhost:3001/api/papers/${id}/memos.json`, config)
+    axios.get(`${this.DOMAIN}/api/papers/${id}/memos.json`, config)
     .then((response) => {
       this.setState({
         memos: response.data,
@@ -40,10 +43,10 @@ class Paper extends Component {
 
   addMemo = () => { // 내가 만든 메소드에서 this를 쓰기 위해 화살표 함수를 씀 여기서는
     const {id} = this.props.match.params;
-    const data = { memo: { content: '', from: this.state.currentUser.email, paper_id: id, user_id: this.state.currentUser.id }};
+    const data = { memo: { content: '', from: this.state.currentUser.name, paper_id: id, user_id: this.state.currentUser.id }};
     const config = { 
       headers: { Authorization: "bearer " + localStorage.getItem('jwt')}};
-    axios.post(`http://localhost:3001/api/papers/${id}/memos.json`, data, config)
+    axios.post(`${this.DOMAIN}/api/papers/${id}/memos.json`, data, config)
     .then((response) => {
       const memos = update(
         this.state.memos, {
@@ -63,7 +66,6 @@ class Paper extends Component {
   }
 
   completeEditingMemo = (memoId, memoContent, memoFrom) => {
-    console.log(memoContent, memoFrom);
     const {id} = this.props.match.params;
     const data = {
       memo: {
@@ -75,15 +77,33 @@ class Paper extends Component {
       }
     };
     const config = { headers: {Authorization: "bearer " + localStorage.getItem('jwt')}};
-    axios.patch(`http://localhost:3001/api/papers/${id}/memos/${memoId}.json`, data, config)
-    .then((response) => { console.log(response);
+    axios.patch(`${this.DOMAIN}/api/papers/${id}/memos/${memoId}.json`, data, config)
+    .then((response) => {
       const memoIndex = this.state.memos.findIndex((memo) => memo.id === memoId);
       const memos = update( this.state.memos, {
         [memoIndex]: { $set: response.data } 
       });
       this.setState({ 
         memos: memos,
-        editingMemoId: null }); console.log(this.state.memos);
+        editingMemoId: null });
+    })
+    .catch((error) => console.log(error));
+  }
+
+  changeColor = (attr) => {
+    const randomColor = ColorList[Math.floor(Math.random() * ColorList.length)];
+    const {id} = this.props.match.params;
+    const data = {
+      paper: {
+        id: id,
+        color: attr === 'color' ? randomColor : this.state.paper.color,
+        background_color: attr === 'color' ? this.state.paper.background_color : randomColor
+      }
+    };
+    const config = { headers: {Authorization: "bearer " + localStorage.getItem('jwt')}};
+    axios.patch(`${this.DOMAIN}/api/papers/${id}.json`, data, config)
+    .then((response) => {
+      this.setState({ paper: response.data });
     })
     .catch((error) => console.log(error));
   }
@@ -107,22 +127,28 @@ class Paper extends Component {
           hasMyMemo = true;
         }
       });
-      hasMyMemo ? ( createButton = null ) : ( createButton = <button className="write-bt" style={btStyle} onClick={this.addMemo}>써주기</button> );
+      hasMyMemo ? ( createButton = null ) : ( createButton = <button className="paper-bt" style={btStyle} onClick={this.addMemo}>써주기</button> );
     } else {
-      createButton = null;
+      createButton = (
+        // https://stackoverflow.com/questions/29810914/react-js-onclick-cant-pass-value-to-method
+        <div>
+          <button onClick={() => this.changeColor('color')} name="color" id="color" className="paper-bt" style={btStyle}>선 색 바꾸기</button>
+          <button onClick={() => this.changeColor('background_color')} name="background_color" id="background_color" className="paper-bt" style={btStyle}>배경 색 바꾸기</button>
+        </div>
+      );
     }
 
     return (
       <div className="paper" style={style}>
         <div className="title">
-          <div className="user-name">~~~의 롤링페이퍼</div> {/* 헐 롤링페이퍼 주인 이름은 또 어떻게 가져오지 */}
+          <div className="user-name">{`${this.state.paper.user.name}의 롤링페이퍼`}</div> {/* 이름이 자음으로 끝나면 어색해서 어떡하지 이것까지 신경쓸 시간이 생기려나 */}
           {createButton}
         </div>
         {this.state.memos.map((memo) => {
           if (memo.id === this.state.editingMemoId) {
-            return ( <MemoForm memo={memo} key={memo.id} currentUser={this.state.currentUser} completeEditingMemo={this.completeEditingMemo} /> );
+            return ( <MemoForm memo={memo} key={memo.id} currentUser={this.state.currentUser} completeEditingMemo={this.completeEditingMemo} btStyle={btStyle} textColor={this.state.paper.color} /> );
           } else {
-            return ( <Memo memo={memo} key={memo.id} currentUser={this.state.currentUser} editMemo={this.editMemo} /> );
+            return ( <Memo memo={memo} key={memo.id} currentUser={this.state.currentUser} editMemo={this.editMemo} btStyle={btStyle} /> );
           }
         })}
       </div>

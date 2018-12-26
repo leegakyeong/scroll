@@ -1,11 +1,17 @@
+@font-face {
+  font-family: 'Spoqa Han Sans';
+  src: url('./fonts/Spoqa\ Han\ Sans\ Bold.ttf');
+}
+
 .paper {
   border: 2px solid;
-  width: 60%;
+  width: 90%;
   margin: auto;
   display: grid;
   grid-template-columns: 25% 25% 25% 25%;
   min-height: 200px;
   grid-template-rows: 50px auto;
+  font-family: 'Spoqa Han Sans';
 }
 
 .title {
@@ -14,13 +20,40 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
+  /* border-bottom: 2px solid; */
+  font-weight: bold;
+  letter-spacing: 0.7px;
 }
 
-.write-bt {
+.paper-bt {
   border: none;
   cursor: pointer;
 }
 
-.write-bt:focus {
+.paper-bt:focus {
   outline: none;
+}
+
+@media screen and (max-width:1199px) {
+  .paper {
+    grid-template-columns: 33.333% 33.333% 33.333%;
+    width: 90%;
+    min-width: 690px;
+  }
+
+  .title {
+    grid-column-end: 4;
+  }
+}
+
+@media screen and (max-width:767px) {
+  .paper {
+    grid-template-columns: 100%;
+    width: 90%;
+    min-width: 230px;
+  }
+
+  .title {
+    grid-column-end: 2;
+  }
 }

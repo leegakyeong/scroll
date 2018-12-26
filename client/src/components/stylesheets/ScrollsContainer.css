@@ -4,4 +4,20 @@
   margin: auto;
   display: grid;
   grid-template-columns: 25% 25% 25% 25%;
+  grid-row-gap: 20px;
+}
+
+@media screen and (max-width:1199px) {
+  #header,
+  .scrolls-container {
+    min-width: 690px;
+    grid-template-columns: 33.333% 33.333% 33.333%;
+  }
+}
+@media screen and (max-width:767px) {
+  #header,
+  .scrolls-container {
+    min-width: 230px;
+    grid-template-columns: 100% 
+  }
 }
