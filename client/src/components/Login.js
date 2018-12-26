@@ -3,19 +3,19 @@ import './stylesheets/Login.css';
 
 const Login = (props) => {
   return (
-    <div class="loginBox">
-      <img src="/favicon.ico"></img>
+    <div className="loginBox">
+      <img src="/scroll_logo.png" alt="scroll logo"></img>
       <h1>SCROLL</h1>
       <form>
-        <div class="Name">
+        <div className="Name">
           {/* <label>Email</label> */}
           <input name="name" id="name" placeholder="NAME"/>
         </div>
-        <div class="Email">
+        <div className="Email">
           {/* <label>Email</label> */}
           <input name="email" id="email" placeholder="EMAIL"/>
         </div>
-        <div class="Password">
+        <div className="Password">
           {/* <label>Password</label> */}
           <input name="password" id="password" placeholder="PASSWORD"/>
         </div>

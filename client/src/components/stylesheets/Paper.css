@@ -1,6 +1,6 @@
 .paper {
   border: 2px solid;
-  width: 80%;
+  width: 90%;
   margin: auto;
   display: grid;
   grid-template-columns: 25% 25% 25% 25%;
@@ -26,10 +26,23 @@
   outline: none;
 }
 
-@media only screen and (orientation: portrait) {
+@media screen and (max-width:1199px) {
+  .paper {
+    grid-template-columns: 33.333% 33.333% 33.333%;
+    width: 90%;
+    min-width: 690px;
+  }
+
+  .title {
+    grid-column-end: 4;
+  }
+}
+
+@media screen and (max-width:767px) {
   .paper {
     grid-template-columns: 100%;
     width: 90%;
+    min-width: 230px;
   }
 
   .title {
