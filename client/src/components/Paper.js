@@ -127,13 +127,13 @@ class Paper extends Component {
           hasMyMemo = true;
         }
       });
-      hasMyMemo ? ( createButton = null ) : ( createButton = <button className="write-bt" style={btStyle} onClick={this.addMemo}>써주기</button> );
+      hasMyMemo ? ( createButton = null ) : ( createButton = <button className="paper-bt" style={btStyle} onClick={this.addMemo}>써주기</button> );
     } else {
       createButton = (
         // https://stackoverflow.com/questions/29810914/react-js-onclick-cant-pass-value-to-method
         <div>
-          <button onClick={() => this.changeColor('color')} name="color" id="color">선 색 바꾸기</button>
-          <button onClick={() => this.changeColor('background_color')} name="background_color" id="background_color">배경 색 바꾸기</button>
+          <button onClick={() => this.changeColor('color')} name="color" id="color" className="paper-bt" style={btStyle}>선 색 바꾸기</button>
+          <button onClick={() => this.changeColor('background_color')} name="background_color" id="background_color" className="paper-bt" style={btStyle}>배경 색 바꾸기</button>
         </div>
       );
     }

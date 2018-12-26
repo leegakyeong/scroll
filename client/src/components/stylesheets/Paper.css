@@ -17,12 +17,12 @@
   border-bottom: 2px solid;
 }
 
-.write-bt {
+.paper-bt {
   border: none;
   cursor: pointer;
 }
 
-.write-bt:focus {
+.paper-bt:focus {
   outline: none;
 }
 
