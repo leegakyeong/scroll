@@ -11,11 +11,16 @@ class MemoForm extends Component {
   }
 
   render() {
+
     return (
       <div className="memoform">
         <button onClick={this.handleClick} style={this.props.btStyle} className="memo-bt">완료</button>
-        <textarea name="content" id="content" defaultValue={this.props.memo.content} className="memoform-content" style={{color: `${this.props.textColor}`}}></textarea>
+        <textarea name="content" id="content" defaultValue={this.props.memo.content} className="memoform-content" style={{color: `${this.props.textColor}`}} autoFocus></textarea>
         <input name="from" id="from" defaultValue={this.props.memo.from} className="memoform-from" style={{color: `${this.props.textColor}`}} />
+
+        <div>
+          {this.props.memo.memoHeight}
+        </div>
       </div>
     );
   }

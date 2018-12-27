@@ -11,13 +11,17 @@
 } */
 
 .memoform-content {
+  resize: none;
+  box-sizing: border-box;
   width: 100%;
-  height: 60%;
-  background-color: rgba(0,0,0,0);
+  /* background-color: rgba(0,0,0,0); */
+  min-height: 100px;  /* offsetHeight 받아서 고치기 */
   border: none;
   font-family: inherit;
-  font-size: 1rem;
-  padding: 0px;
+  font-size: 0.95rem;
+  padding: 5px 10px;
+  border-radius: 10px;
+  background-color: #ffffff70;
 }
 
 .memoform-content:focus {
@@ -25,11 +29,15 @@
 }
 
 .memoform-from {
+  box-sizing: border-box;
   font-family: inherit;
-  font-size: 1rem;
+  font-size: 0.8rem;
   width: 100%;
   text-align: right;
   border: none;
   padding: 0px;
   margin: 15px 0px 0px 0px;
+  padding: 2px 10px;
+  border-radius: 7px;
+  background-color: #ffffff70;
 }

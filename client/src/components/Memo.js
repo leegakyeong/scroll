@@ -21,7 +21,7 @@ class Memo extends Component {
       <div className="memo">
         {editButton}<br />
         <div className="content">{memo.content}</div>
-        <div className="from">{memo.from}</div>
+        <div className="from">by. {memo.from}</div>
       </div>
     );
   }
