@@ -1,3 +1,8 @@
+@font-face {
+    font-family: 'Spoqa Han Sans';
+    src: url('./fonts/Spoqa\ Han\ Sans\ Bold.ttf');
+}
+
 .loginBox {
     position: absolute;
     top: 50%;
@@ -5,6 +10,7 @@
     transform: translate(-50%, -50%);
     min-width: 300px;
     text-align: center;
+    font-family: 'Spoqa Han Sans';
 }
 
 h1 {
@@ -21,6 +27,7 @@ input {
     border-bottom-color: rgba(0, 0, 0, 0.3);
     background-color: transparent;
     width: 60%;
+    font-family: inherit;
 }
 
 input:active, input:focus {
@@ -35,6 +42,7 @@ input:active, input:focus {
     border: 2px solid mediumslateblue;
     color: white;
     cursor: pointer;
+    font-family: inherit;
 }
   
 .loginBox > button:hover {
