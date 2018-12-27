@@ -7,11 +7,12 @@
   grid-row-gap: 20px;
 }
 
+
 @media screen and (max-width:1199px) {
   #header,
   .scrolls-container {
     min-width: 690px;
-    grid-template-columns: 33.333% 33.333% 33.333%;
+    grid-template-columns: 33.333% 33.333% 33.333%
   }
 }
 @media screen and (max-width:767px) {

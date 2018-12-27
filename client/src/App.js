@@ -47,7 +47,7 @@ class App extends Component {
       this.setState({ isLoggedIn: true });
       this.componentDidMount(); // 이게 좋은 방법인지는 잘 모르겠지만..!
     })
-    .catch((error) => console.log(error));
+    .catch((error) => alert('아이디나 비밀번호를 다시 확인하세요.'));
   }
 
   logout() {

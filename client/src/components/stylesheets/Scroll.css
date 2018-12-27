@@ -47,6 +47,10 @@
   margin: 0px;
 }
 
+.flex-container > a {
+  font-size: 14px;
+}
+
 .scroll-title {
   font-weight: bold;
 }
