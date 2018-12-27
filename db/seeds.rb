@@ -5,17 +5,25 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-User.create(name: "유저1", email: "a@a.com", password: "aaaaaa", password_confirmation: "aaaaaa", admin: true) # 왜 전에 confirm이라고만 했을 때는 에러가 안 떴을까...
-User.create(name: "유저2", email: "b@b.com", password: "bbbbbb", password_confirmation: "bbbbbb")
-User.create(name: "유저3", email: "c@c.com", password: "cccccc", password_confirmation: "cccccc")
-User.create(name: "유저4", email: "d@d.com", password: "dddddd", password_confirmation: "dddddd")
-User.create(name: "유저5", email: "e@e.com", password: "eeeeee", password_confirmation: "eeeeee")
+User.create(name: "admin", email: "a@a.com", password: "aaaaaa", password_confirmation: "aaaaaa", admin: true) # 왜 전에 confirm이라고만 했을 때는 에러가 안 떴을까...
+User.create(name: "유저1", email: "b@b.com", password: "bbbbbb", password_confirmation: "bbbbbb")
+User.create(name: "유저2", email: "c@c.com", password: "cccccc", password_confirmation: "cccccc")
+User.create(name: "유저3", email: "d@d.com", password: "dddddd", password_confirmation: "dddddd")
+User.create(name: "유저4", email: "e@e.com", password: "eeeeee", password_confirmation: "eeeeee")
+User.create(name: "유저5", email: "f@f.com", password: "ffffff", password_confirmation: "ffffff")
+User.create(name: "유저6", email: "g@g.com", password: "gggggg", password_confirmation: "gggggg")
+User.create(name: "유저7", email: "h@h.com", password: "hhhhhh", password_confirmation: "hhhhhh")
+User.create(name: "유저8", email: "i@i.com", password: "iiiiii", password_confirmation: "iiiiii")
 
 Paper.create(color: "mediumpurple", background_color: "lavenderblush", user_id: 1)
 Paper.create(color: "mediumslateblue", background_color: "ghostwhite", user_id: 2)
 Paper.create(color: "cornflowerblue", background_color: "whitesmoke", user_id: 3)
 Paper.create(color: "fuchsia", background_color: "greenyellow", user_id: 4)
 Paper.create(color: "blue", background_color: "lavender", user_id: 5)
+Paper.create(color: "rebeccapurple ", background_color: "aliceblue", user_id: 6)
+Paper.create(color: "yellowgreen", background_color: "yellow", user_id: 7)
+Paper.create(color: "palegreen", background_color: "seagreen", user_id: 8)
+Paper.create(color: "maroon", background_color: "lightsteelblue", user_id: 9)
 
 Memo.create(content: "hello1", from: "b@b.com", paper_id: 1, user_id: 2)
 Memo.create(content: "hello2", from: "c@c.com", paper_id: 2, user_id: 3)
