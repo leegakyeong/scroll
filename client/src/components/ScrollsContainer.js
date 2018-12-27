@@ -10,7 +10,7 @@ class ScrollsContainer extends Component {
       papers: []
     };
 
-    this.DOMAIN = 'http://localhost:3001';
+    this.DOMAIN = 'https://scroll2018.herokuapp.com';
   }
 
   componentDidMount() {

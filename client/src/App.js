@@ -17,7 +17,7 @@ class App extends Component {
     this.login = this.login.bind(this);
     this.logout = this.logout.bind(this);
 
-    this.DOMAIN = 'http://localhost:3001';
+    this.DOMAIN = 'https://scroll2018.herokuapp.com';
   }
 
   componentDidMount() {

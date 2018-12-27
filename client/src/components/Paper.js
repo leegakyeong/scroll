@@ -18,7 +18,7 @@ class Paper extends Component {
     };
     this.editMemo = this.editMemo.bind(this);
 
-    this.DOMAIN = 'http://localhost:3001';
+    this.DOMAIN = 'https://scroll2018.herokuapp.com';
   }
 
   componentDidMount() {
